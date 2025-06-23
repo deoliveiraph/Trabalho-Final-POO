@@ -1,32 +1,18 @@
 package dados;
 
 public class JogoEletronico extends Jogo {
-    private TipoEletronico tipo;
-    private String plataforma;
+    public enum Categoria { AVENTURA, ESTRATEGIA, SIMULACAO }
+    private Categoria categoria;
 
-    public JogoEletronico(int codigo, String nome, double valorBase, TipoEletronico tipo, String plataforma) {
-        setCodigo(codigo);
-        setNome(nome);
-        setValorBase(valorBase);
-        this.tipo = tipo;
-        this.plataforma = plataforma;
+    public JogoEletronico(int codigo, String nome, double valorBase, Categoria categoria) {
+        super(codigo, nome, valorBase);
+        this.categoria = categoria;
     }
 
-    public TipoEletronico getTipo() { return tipo; }
-    public void setTipo(TipoEletronico tipo) { this.tipo = tipo; }
-    public String getPlataforma() { return plataforma; }
-    public void setPlataforma(String plataforma) { this.plataforma = plataforma; }
+    public Categoria getCategoria() { return categoria; }
 
     @Override
     public double calculaAluguel() {
-        if (tipo == TipoEletronico.SIMULACAO) {
-            return getValorBase() * 1.1;
-        }
-        return getValorBase();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + " [Eletrônico: " + tipo + ", Plataforma: " + plataforma + "]";
+        return getValorBase() * 1.5;
     }
 }

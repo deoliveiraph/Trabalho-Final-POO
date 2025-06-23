@@ -1,8 +1,9 @@
 package dados;
 
 public class Empresarial extends Cliente {
-
-    private String nomeFantasia;
-    private String cnpj;
-
+    public Empresarial(int numero, String nome) {
+        super(numero, nome);
+    }
+    @Override
+    public String getTipo() { return "Empresarial"; }
 }
